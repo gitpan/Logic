@@ -1,19 +1,16 @@
-use ExtUtils::MakeMaker ;
-
-# See lib/ExtUtils/MakeMaker.pm for details of how to influence
-# the contents of the Makefile that is written.
+use 5.006001;
+use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    'NAME'         => 'Logic3',
-    'VERSION_FROM' => 'Logic3.pm', # finds $VERSION
-    'DISTNAME'     => 'Logic3',
-    ($] >= 5.005 ?
-        (
-            ABSTRACT => '3-value logic; both propagating and non-propagating nulls',
-            AUTHOR   => 'Mark Summerfield <mark.summerfield@chest.ac.uk>',
-        ) : () ),
-    'LIBS'         => [''],   # e.g., '-lm'
-    'DEFINE'       => '',     # e.g., '-DHAVE_SOMETHING'
-    'INC'          => '',     # e.g., '-I/usr/include/other'
-    'dist'         => { COMPRESS => "gzip -9", SUFFIX => "gz" }
-) ;
+    NAME              => 'Logic',
+    VERSION_FROM      => 'lib/Logic.pm',
+    PREREQ_PM         => {
+        Perl6::Attributes   => 0,
+        Scalar::Util        => 0,
+        Devel::Caller::Perl => 0,
+        Attribute::Handlers => 0,
+        Filter::Simple      => 0,
+    }, 
+    ABSTRACT_FROM     => 'lib/Logic.pm',
+    AUTHOR            => 'Luke Palmer <luke@luqui.org>',
+);
